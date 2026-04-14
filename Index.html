@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para minha Maninha</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }h1 {
+  margin: 20px;
+  font-size: 28px;
+  animation: fadeIn 2s ease;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 15px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+img {
+  width: 100%;
+  border-radius: 15px;
+  animation: zoomIn 1.5s ease;
+}
+
+p {
+  font-size: 16px;
+  margin-top: 10px;
+  animation: fadeIn 2s ease;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #ff7eb3;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+  </style>
+</head>
+<body><h1>Para minha maninha</h1><button onclick="mostrar()">Clique aqui</button>
+
+<div id="conteudo" class="container hidden">  <div class="card">
+    <img src="imagem1.jpg">
+    <p>
+      Maninha, a vida e tipo uma aventura cheia de desafios, momentos dificeis e caminhos desconhecidos.<br><br>
+      Mas o importante nao e o que a gente enfrenta, e com quem a gente enfrenta.<br><br>
+      E eu sei que voce sempre vai estar do meu lado, porque voce nao e so minha amiga, voce e minha irma.
+    </p>
+  </div>  <div class="card">
+    <img src="imagem2.jpg">
+    <p>
+      Maninha, proteger quem a gente ama e o que realmente importa.<br><br>
+      Eu sempre vou estar aqui por voce, em qualquer momento, nos dias bons e nos dias ruins.<br><br>
+      Porque voce e minha maninha, e eu vou cuidar de voce sempre.
+    </p>
+  </div>  <div class="card">
+    <img src="imagem3.jpg">
+    <p>
+      Maninha, com voce tudo fica mais leve, mais divertido, mais feliz.<br><br>
+      A gente pode estar fazendo nada ou ate nas piores situacoes, mas sempre da um jeito de rir junto.<br><br>
+      E isso e o que faz voce ser tao importante pra mim.<br><br>
+      Porque igual esses dois, a gente pode ser meio doido as vezes kkk<br>
+      mas o que a gente tem e de verdade.<br><br>
+      E eu nunca vou trocar isso por nada.
+    </p>
+  </div></div><script>
+function mostrar() {
+  const conteudo = document.getElementById("conteudo");
+  conteudo.classList.remove("hidden");
+
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.add("show");
+    }, index * 600);
+  });
+
+  criarCoracoes();
+}
+
+function criarCoracoes() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerText = "*";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }, 300);
+}
+</script></body>
+</html>
